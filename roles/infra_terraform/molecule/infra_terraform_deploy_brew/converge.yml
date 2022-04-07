@@ -13,7 +13,11 @@
         gather_subset: "min"
         gather_timeout: "10"
 
-    - name: "Initialize Role with defaults"
+    - name: "Deploy required packages"
+      vars:
+        infra_terraform:
+          deploy: true
+        infra_terraform_application: "{{ test_infra_terraform_application_brew }}"
       ansible.builtin.include_role:
         name: "infra_terraform"
 ...
