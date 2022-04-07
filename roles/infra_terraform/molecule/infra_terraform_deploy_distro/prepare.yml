@@ -4,12 +4,9 @@
   gather_facts: false
   tasks:
 
-    - name: "Prepare node"
-      vars:
-        auto_ansible_node:
-          deploy: true
-      ansible.builtin.include_role:
-        name: "serdigital64.automation.auto_ansible_node"
+    - name: "Load common test vars"
+      ansible.builtin.include_vars:
+        file: "../test_vars.yml"
 
     - name: "Discover platform"
       ansible.builtin.setup:

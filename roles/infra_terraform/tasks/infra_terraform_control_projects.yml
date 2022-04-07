@@ -30,7 +30,7 @@
   ansible.builtin.command:
     chdir: "{{ infra_terraform___control_path }}"
     argv:
-      - "{{ infra_terraform_base['run']['terraform'] }}"
+      - "{{ infra_terraform_base['run'][infra_terraform_application['type']]['terraform'] }}"
       - "init"
       - "-input=false"
       - "-no-color"
@@ -58,7 +58,7 @@
   ansible.builtin.command:
     chdir: "{{ infra_terraform___control_path }}"
     argv:
-      - "{{ infra_terraform_base['run']['terraform'] }}"
+      - "{{ infra_terraform_base['run'][infra_terraform_application['type']]['terraform'] }}"
       - "apply"
       - "-input=false"
       - "-no-color"
