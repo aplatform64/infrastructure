@@ -1,5 +1,5 @@
 ---
-- name: "Converge"
+- name: "Prepare"
   hosts: "{{ lookup('env', 'DEVAP_TEST_PLATFORM') | default('all') }}"
   gather_facts: false
   tasks:
@@ -13,7 +13,11 @@
         gather_subset: "min"
         gather_timeout: "10"
 
-    - name: "Initialize Role with defaults"
+    - name: "Prepare"
+      vars:
+        infra_terraform:
+          resolve_prereq: true
+        infra_terraform_application: "{{ test_infra_terraform_application_brew }}"
       ansible.builtin.include_role:
         name: "infra_terraform"
 ...

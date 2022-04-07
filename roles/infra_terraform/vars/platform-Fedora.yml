@@ -1,4 +1,15 @@
 ---
+infra_terraform_base:
+  paths: "{{ infra_terraform_base_common['paths'] }}"
+  files: "{{ infra_terraform_base_common['files'] }}"
+  templates: "{{ infra_terraform_base_common['templates'] }}"
+  access: "{{ infra_terraform_base_common['access'] }}"
+  run:
+    brew:
+      terraform: "/home/linuxbrew/.linuxbrew/bin/terraform"
+    distro:
+      terraform: "/usr/bin/terraform"
+
 infra_terraform_repository_custom_yum:
   - name: "hashicorp"
     description: "Hashicorp official YUM repository"

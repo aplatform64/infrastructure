@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.1.0
 
 ## [Unreleased]
 
-## [1.0.41]
+## [1.1.0]
 
-[Unreleased]: https://github.com/serdigital64/aplatform64/compare/1.0.41...HEAD
-[1.0.41]: https://github.com/serdigital64/aplatform64/releases/tag/1.0.41
+### Added
+
+- infra_terraform: MacSOX, RHEL8, Almalinux8 support
+- infra_vagrant: RHEL8, Almalinux8 support
+
+## [1.0.4]
+
+[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/serdigital64/aplatform64/compare/1.0.4...1.1.0
+[1.0.4]: https://github.com/serdigital64/aplatform64/releases/tag/1.0.4

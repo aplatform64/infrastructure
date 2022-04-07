@@ -1,0 +1,18 @@
+---
+infra_terraform_base:
+  paths: "{{ infra_terraform_base_common['paths'] }}"
+  files: "{{ infra_terraform_base_common['files'] }}"
+  templates: "{{ infra_terraform_base_common['templates'] }}"
+  access: "{{ infra_terraform_base_common['access'] }}"
+  run:
+    distro: {}
+    brew:
+      terraform: "/opt/homebrew/bin/terraform"
+
+infra_terraform_repository_custom_yum: []
+infra_terraform_repository_custom_apt: []
+
+infra_terraform_repository_catalog_distro: {}
+infra_terraform_repository_catalog_yum: {}
+infra_terraform_repository_catalog_apt: {}
+...
