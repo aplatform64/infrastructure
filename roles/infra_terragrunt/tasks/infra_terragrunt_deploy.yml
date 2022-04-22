@@ -1,0 +1,19 @@
+---
+- name: "Infrastructure / Terragrunt / Deploy / Check required parameters"
+  ansible.builtin.assert:
+    fail_msg: "Required end-state parameters are missing ({{ infra_terragrunt_application | default('infra_terragrunt_application') }})"
+    quiet: true
+    that:
+      - infra_terragrunt_application is defined
+      - infra_terragrunt_application | length > 0
+      - infra_terragrunt_application['name'] is defined
+      - infra_terragrunt_application['type'] is defined
+      - infra_terragrunt_application['version'] is defined
+      - infra_terragrunt_application['installed'] is defined
+
+- name: "Infrastructure / Terragrunt / Deploy / Package"
+  ansible.builtin.include_tasks:
+    file: "infra_terragrunt_deploy_package.yml"
+  when:
+    - infra_terragrunt_application is defined
+...

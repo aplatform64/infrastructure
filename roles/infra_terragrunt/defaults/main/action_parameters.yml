@@ -1,0 +1,5 @@
+---
+infra_terragrunt:
+  resolve_prereq: false
+  deploy: false
+...

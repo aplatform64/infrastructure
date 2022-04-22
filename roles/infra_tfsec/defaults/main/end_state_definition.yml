@@ -1,0 +1,7 @@
+---
+infra_tfsec_application:
+  name: "tfsec"
+  type: "brew"
+  version: "latest"
+  installed: true
+...

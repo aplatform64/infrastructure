@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.1.0
 
 ## [Unreleased]
 
+## [1.2.0]
+
+### Added
+
+- infra_tfsec: new module
+- infra_terragrunt: new module
+
 ## [1.1.0]
 
 ### Added
@@ -16,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.1.0
 
 ## [1.0.4]
 
-[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.1.0...HEAD
+[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/serdigital64/aplatform64/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/serdigital64/aplatform64/compare/1.0.4...1.1.0
 [1.0.4]: https://github.com/serdigital64/aplatform64/releases/tag/1.0.4

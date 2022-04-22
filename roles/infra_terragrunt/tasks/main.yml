@@ -1,0 +1,16 @@
+---
+- name: "Infrastructure / Terragrunt / Initialize"
+  ansible.builtin.include_tasks:
+    file: "infra_terragrunt_initialize.yml"
+
+- name: "Infrastructure / Terragrunt / Deploy"
+  ansible.builtin.include_tasks:
+    file: "infra_terragrunt_deploy.yml"
+  when:
+    - infra_terragrunt['deploy'] is defined
+    - infra_terragrunt['deploy']
+
+- name: "Infrastructure / Terragrunt / Finalize"
+  ansible.builtin.include_tasks:
+    file: "infra_terragrunt_finalize.yml"
+...

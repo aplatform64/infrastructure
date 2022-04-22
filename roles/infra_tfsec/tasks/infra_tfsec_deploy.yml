@@ -1,0 +1,19 @@
+---
+- name: "Infrastructure / TFSec / Deploy / Check required parameters"
+  ansible.builtin.assert:
+    fail_msg: "Required end-state parameters are missing ({{ infra_tfsec_application | default('infra_tfsec_application') }})"
+    quiet: true
+    that:
+      - infra_tfsec_application is defined
+      - infra_tfsec_application | length > 0
+      - infra_tfsec_application['name'] is defined
+      - infra_tfsec_application['type'] is defined
+      - infra_tfsec_application['version'] is defined
+      - infra_tfsec_application['installed'] is defined
+
+- name: "Infrastructure / TFSec / Deploy / Package"
+  ansible.builtin.include_tasks:
+    file: "infra_tfsec_deploy_package.yml"
+  when:
+    - infra_tfsec_application is defined
+...

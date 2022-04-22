@@ -1,0 +1,28 @@
+---
+# Define supported platforms
+infra_terragrunt_platforms:
+  - "CentOS8"
+  - "RedHat8"
+  - "AlmaLinux8"
+  - "OracleLinux8"
+  - "Ubuntu20"
+  - "Ubuntu21"
+  - "Fedora33"
+  - "Fedora35"
+  - "Debian10"
+  - "Debian11"
+  - "MacOSX12"
+
+# Multiplatform packages
+infra_terragrunt_profiles:
+  brew:
+    latest:
+      supported: true
+      packages:
+        - name: "terragrunt"
+
+# Define common paths
+infra_terragrunt_base:
+  run:
+    terragrunt: "{{ (ansible_distribution == 'MacOSX') | ternary('/opt/homebrew/bin/terragrunt', '/home/linuxbrew/.linuxbrew/bin/terragrunt') }}"
+...
