@@ -1,0 +1,7 @@
+---
+infra_terragrunt_application:
+  name: "terragrunt"
+  type: "brew"
+  version: "latest"
+  installed: true
+...
