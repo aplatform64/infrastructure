@@ -1,0 +1,25 @@
+---
+- name: "Infrastructure / Helm / Prerequisite / Prepare package managers"
+  vars:
+    sys_repository:
+      prepare: true
+      deploy: true
+      setup: true
+      provision: true
+  ansible.builtin.include_role:
+    name: "serdigital64.system.sys_repository"
+
+- name: "Infrastructure / Helm / Prerequisite / Prepare archive manager"
+  vars:
+    bkp_archive:
+      deploy: true
+  ansible.builtin.include_role:
+    name: "serdigital64.backup.bkp_archive"
+
+- name: "Infrastructure / Helm / Prerequisite / Prepare package installer"
+  vars:
+    sys_package:
+      prepare: true
+  ansible.builtin.include_role:
+    name: "serdigital64.system.sys_package"
+...

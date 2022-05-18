@@ -1,0 +1,10 @@
+---
+- name: "Infrastructure / Helm / Deploy / Package / Provision application"
+  vars:
+    sys_package:
+      provision: true
+    sys_package_application: "{{ infra_helm_application }}"
+    sys_package_profiles: "{{ infra_helm_profiles }}"
+  ansible.builtin.include_role:
+    name: "serdigital64.system.sys_package"
+...
