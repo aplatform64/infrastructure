@@ -1,0 +1,23 @@
+---
+- name: "Infrastructure / Helm / Initialize"
+  ansible.builtin.include_tasks:
+    file: "infra_helm_initialize.yml"
+
+- name: "Infrastructure / Helm / Prepare"
+  ansible.builtin.include_tasks:
+    file: "infra_helm_prepare.yml"
+  when:
+    - infra_helm['prepare'] is defined
+    - infra_helm['prepare']
+
+- name: "Infrastructure / Helm / Deploy"
+  ansible.builtin.include_tasks:
+    file: "infra_helm_deploy.yml"
+  when:
+    - infra_helm['deploy'] is defined
+    - infra_helm['deploy']
+
+- name: "Infrastructure / Helm / Finalize"
+  ansible.builtin.include_tasks:
+    file: "infra_helm_finalize.yml"
+...
