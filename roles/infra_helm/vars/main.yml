@@ -1,0 +1,60 @@
+---
+# Define supported platforms
+infra_helm_platforms:
+  - "CentOS8"
+  - "RedHat8"
+  - "AlmaLinux8"
+  - "Rocky8"
+  - "OracleLinux8"
+  - "Ubuntu20"
+  - "Ubuntu21"
+  - "Ubuntu22"
+  - "Fedora33"
+  - "Fedora35"
+  - "Debian10"
+  - "Debian11"
+  - "MacOSX12"
+
+# Multiplatform packages
+infra_helm_profiles:
+  binary:
+    v3_8: &infra_helm_profiles_binary_latest
+      supported: true
+      origin: "https://get.helm.sh"
+      packages:
+        - file: "helm-v3.8.2-linux-amd64.tar.gz"
+          uncompress: true
+      paths:
+        - target: "{{ infra_helm_base['paths']['root'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+        - target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+      promotion:
+        - source: "linux-amd64/helm"
+          target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['exe'] }}"
+    latest: *infra_helm_profiles_binary_latest
+
+# Define common paths
+infra_helm_base:
+  access:
+    user:
+      root: "{{ infra_helm_owners['root']['user'] }}"
+    group:
+      root: "{{ infra_helm_owners['root']['group'] }}"
+    mode:
+      dir: "0755"
+      file: "0644"
+      exe: "0755"
+  run:
+    helm: "/opt/helm/bin/helm"
+  paths:
+    root: "{{ infra_helm_paths['root'] }}"
+    bin: "{{ infra_helm_paths['root'] + '/bin' }}"
+...

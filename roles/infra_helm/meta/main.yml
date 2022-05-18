@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: "infra_tfsec"
+  role_name: "infra_helm"
   author: "serdigital64"
-  description: "Manage provisioning of the TFSec tool"
+  description: "Manage provisioning of Helm"
   company: "none"
   license: "GPL-3.0-or-later"
   min_ansible_version: "2.10"
@@ -11,6 +11,6 @@ galaxy_info:
       versions:
         - "any"
   galaxy_tags:
-    - "tfsec"
+    - "helm"
 dependencies: []
 ...

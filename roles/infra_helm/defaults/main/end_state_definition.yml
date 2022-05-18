@@ -1,0 +1,15 @@
+---
+infra_helm_application:
+  name: "helm"
+  type: "binary"
+  version: "latest"
+  installed: true
+
+infra_helm_paths:
+  root: "/opt/helm"
+
+infra_helm_owners:
+  root:
+    user: "helm"
+    group: "helm"
+...

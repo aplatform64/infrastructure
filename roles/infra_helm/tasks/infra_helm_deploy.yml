@@ -1,0 +1,19 @@
+---
+- name: "Infrastructure / Helm / Deploy / Check required parameters"
+  ansible.builtin.assert:
+    fail_msg: "Required end-state parameters are missing ({{ infra_helm_application | default('infra_helm_application') }})"
+    quiet: true
+    that:
+      - infra_helm_application is defined
+      - infra_helm_application | length > 0
+      - infra_helm_application['name'] is defined
+      - infra_helm_application['type'] is defined
+      - infra_helm_application['version'] is defined
+      - infra_helm_application['installed'] is defined
+
+- name: "Infrastructure / Helm / Deploy / Package"
+  ansible.builtin.include_tasks:
+    file: "infra_helm_deploy_package.yml"
+  when:
+    - infra_helm_application is defined
+...

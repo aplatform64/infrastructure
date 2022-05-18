@@ -1,0 +1,28 @@
+---
+- name: "Infrastructure / Helm / Initialize / Check Platform compatibility"
+  ansible.builtin.assert:
+    quiet: true
+    fail_msg: "Target Platform not supported: {{ ansible_distribution + ansible_distribution_major_version }}"
+    that:
+      - ansible_distribution + ansible_distribution_major_version in infra_helm_platforms
+
+- name: "Infrastructure / Helm / Initialize / Check required parameters"
+  ansible.builtin.assert:
+    quiet: true
+    fail_msg: "required parameters are missing ({{
+      infra_helm_paths | default('infra_helm_paths') }},{{ infra_helm_owners | default('infra_helm_owners') }})"
+    that:
+      - infra_helm_paths is defined
+      - infra_helm_paths['root'] is defined
+      - infra_helm_paths['root'] | length > 0
+      - infra_helm_owners is defined
+      - infra_helm_owners['root'] is defined
+      - infra_helm_owners['root'] | length > 0
+
+- name: "Infrastructure / Helm / Initialize / Resolve prerequisites"
+  ansible.builtin.include_tasks:
+    file: "infra_helm_prerequisite.yml"
+  when:
+    - infra_helm['resolve_prereq'] is defined
+    - infra_helm['resolve_prereq']
+...

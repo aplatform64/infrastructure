@@ -1,5 +1,5 @@
 ---
-- name: "Prepare"
+- name: "Converge"
   hosts: "{{ lookup('env', 'DEVAP_TEST_PLATFORM') | default('all') }}"
   gather_facts: false
   tasks:
@@ -15,9 +15,8 @@
 
     - name: "Prepare"
       vars:
-        infra_tfsec:
-          resolve_prereq: true
+        infra_helm:
           prepare: true
       ansible.builtin.include_role:
-        name: "infra_tfsec"
+        name: "infra_helm"
 ...
