@@ -71,9 +71,8 @@ infra_terraform_base_common:
 infra_terraform_profiles:
   brew:
     latest:
-      origin: "hashicorp/tap"
       packages:
-        - name: "hashicorp/tap/terraform"
+        - name: "awscli"
   distro:
     latest:
       origin: "hashicorp"
