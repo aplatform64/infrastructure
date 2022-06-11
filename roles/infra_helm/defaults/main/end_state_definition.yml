@@ -2,7 +2,7 @@
 infra_helm_application:
   name: "helm"
   type: "binary"
-  version: "latest"
+  version: "{{ 'latest_' + ansible_architecture }}"
   installed: true
 
 infra_helm_paths:

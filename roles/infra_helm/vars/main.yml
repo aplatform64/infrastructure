@@ -15,10 +15,15 @@ infra_helm_platforms:
   - "Debian11"
   - "MacOSX12"
 
+# Define supported CPU architectures
+infra_helm_machines:
+  - "x86_64"
+  - "arm_64"
+
 # Multiplatform packages
 infra_helm_profiles:
   binary:
-    v3_8: &infra_helm_profiles_binary_latest
+    v3_8_x86_64:
       supported: true
       origin: "https://get.helm.sh"
       packages:
@@ -39,7 +44,71 @@ infra_helm_profiles:
           owner: "{{ infra_helm_base['access']['user']['root'] }}"
           group: "{{ infra_helm_base['access']['group']['root'] }}"
           mode: "{{ infra_helm_base['access']['mode']['exe'] }}"
-    latest: *infra_helm_profiles_binary_latest
+    v3_8_arm_64:
+      supported: true
+      origin: "https://get.helm.sh"
+      packages:
+        - file: "helm-v3.8.2-darwin-arm64.tar.gz"
+          uncompress: true
+      paths:
+        - target: "{{ infra_helm_base['paths']['root'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+        - target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+      promotion:
+        - source: "darwin-arm64/helm"
+          target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['exe'] }}"
+    v3_9_x86_64: &infra_helm_profiles_binary_latest_x86_64
+      supported: true
+      origin: "https://get.helm.sh"
+      packages:
+        - file: "helm-v3.9.0-linux-amd64.tar.gz"
+          uncompress: true
+      paths:
+        - target: "{{ infra_helm_base['paths']['root'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+        - target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+      promotion:
+        - source: "linux-amd64/helm"
+          target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['exe'] }}"
+    v3_9_arm_64: &infra_helm_profiles_binary_latest_arm_64
+      supported: true
+      origin: "https://get.helm.sh"
+      packages:
+        - file: "helm-v3.9.0-darwin-arm64.tar.gz"
+          uncompress: true
+      paths:
+        - target: "{{ infra_helm_base['paths']['root'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+        - target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['dir'] }}"
+      promotion:
+        - source: "darwin-arm64/helm"
+          target: "{{ infra_helm_base['paths']['bin'] }}"
+          owner: "{{ infra_helm_base['access']['user']['root'] }}"
+          group: "{{ infra_helm_base['access']['group']['root'] }}"
+          mode: "{{ infra_helm_base['access']['mode']['exe'] }}"
+    latest_x86_64: *infra_helm_profiles_binary_latest_x86_64
+    latest_arm_64: *infra_helm_profiles_binary_latest_arm_64
 
 # Define common paths
 infra_helm_base:

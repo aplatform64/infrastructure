@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.1.0
 
 ## [Unreleased]
 
+## [1.5.0]
+
+### Added
+
+- infra_helm: arm64 support, helm cli 3.9
+
 ## [1.4.0]
 
 ### Added
@@ -39,7 +45,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.1.0
 
 ## [1.0.4]
 
-[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.4.0...HEAD
+[unreleased]: https://github.com/serdigital64/aplatform64/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/serdigital64/aplatform64/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/serdigital64/aplatform64/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/serdigital64/aplatform64/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/serdigital64/aplatform64/compare/1.1.0...1.2.0
