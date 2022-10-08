@@ -1,8 +1,0 @@
----
-test_tmp: "/tmp/infra_terraform_test"
-test_infra_terraform_application_brew:
-  name: "terraform"
-  type: "brew"
-  version: "latest"
-  installed: true
-...

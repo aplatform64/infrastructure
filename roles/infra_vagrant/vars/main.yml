@@ -5,6 +5,7 @@ infra_vagrant_platforms:
   - "AlmaLinux8"
   - "Rocky8"
   - "OracleLinux8"
+  - "OracleLinux9"
   - "Ubuntu20"
   - "Ubuntu21"
   - "Ubuntu22"
@@ -14,7 +15,7 @@ infra_vagrant_platforms:
   - "Debian10"
   - "Debian11"
 
-infra_vagrant_os_family: "
+infra_vagrant_os_family: |
   {%- if
       ( ansible_distribution == 'CentOS' ) or
       ( ansible_distribution == 'RedHat' ) or
@@ -35,7 +36,6 @@ infra_vagrant_os_family: "
   {%- else -%}
     {{ 'NotSupported' }}
   {%- endif -%}
-  "
 
 infra_vagrant_base:
   run:
