@@ -5,6 +5,7 @@ infra_terraform_platforms:
   - "AlmaLinux8"
   - "Rocky8"
   - "OracleLinux8"
+  - "OracleLinux9"
   - "Ubuntu20"
   - "Ubuntu21"
   - "Ubuntu22"
@@ -15,7 +16,7 @@ infra_terraform_platforms:
   - "Debian11"
   - "MacOSX12"
 
-infra_terraform_os_family: "
+infra_terraform_os_family: |
   {%- if
       ( ansible_distribution == 'CentOS' ) or
       ( ansible_distribution == 'RedHat' ) or
@@ -40,7 +41,6 @@ infra_terraform_os_family: "
   {%- else -%}
     {{ 'NotSupported' }}
   {%- endif -%}
-  "
 
 infra_terraform_tool_options:
   debug: "DEBUG"
