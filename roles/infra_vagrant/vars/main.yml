@@ -15,7 +15,7 @@ infra_vagrant_platforms:
   - "Debian10"
   - "Debian11"
 
-infra_vagrant_os_family: |
+infra_vagrant_os_family: >-
   {%- if
       ( ansible_distribution == 'CentOS' ) or
       ( ansible_distribution == 'RedHat' ) or
